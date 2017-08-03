@@ -12,8 +12,23 @@ export class BlogDetailComponent {
 
   constructor() {
     this.timer = Observable.merge(
-      this.subject$,
-      Observable.interval(3000)
-    ).map(() => new Date());
+      this.subject$.mapTo('hour'),
+      Observable.interval(3000).mapTo('second')
+    )
+    .startWith(<any>new Date())
+    .scan((acc, curr) => {
+      const date = new Date(acc.getTime());
+
+      if (curr === 'second') {
+        date.setSeconds(date.getSeconds() + 5);
+      }
+
+      if (curr === 'hour') {
+        date.setHours(date.getHours() + 1);
+      }
+      return date;
+    })
+
+    // .map(() => new Date());
   }
 }
