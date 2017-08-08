@@ -3,6 +3,8 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject'
 import { Store } from '@ngrx/store'
 
+import { HOUR, SECOND } from './reducers'
+
 @Component({
   templateUrl: './blog-detail.component.pug',
   styleUrls: ['blog-detail.component.scss']
@@ -15,8 +17,8 @@ export class BlogDetailComponent {
     this.timer = store.select('timer');
 
     Observable.merge(
-      this.subject$.mapTo('hour'),
-      Observable.interval(3000).mapTo('second')
+      this.subject$.mapTo(HOUR),
+      Observable.interval(3000).mapTo(SECOND)
     )
     .subscribe((type) => {
       this.store.dispatch({type})
