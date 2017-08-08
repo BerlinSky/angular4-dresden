@@ -9,5 +9,6 @@ import '@angular/forms';
 
 // RxJS
 import 'rxjs';
+import '@ngrx/store';
 
 import 'firebase/firebase.js';
