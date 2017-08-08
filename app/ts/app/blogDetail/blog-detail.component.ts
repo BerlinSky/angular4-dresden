@@ -17,11 +17,11 @@ export class BlogDetailComponent {
     this.timer = store.select('timer');
 
     Observable.merge(
-      this.subject$.mapTo(HOUR),
-      Observable.interval(3000).mapTo(SECOND)
+      this.subject$.mapTo({ type: HOUR, payload: 1 }),
+      Observable.interval(3000).mapTo({ type: SECOND, payload: 5 })
     )
-    .subscribe((type) => {
-      this.store.dispatch({type})
+    .subscribe((action) => {
+      this.store.dispatch(action)
     })
   }
 }
