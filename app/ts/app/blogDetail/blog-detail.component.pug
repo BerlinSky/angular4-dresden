@@ -1,2 +1,3 @@
 div Blog detail component  {{timer | async | date: 'yMMMdjms'}}
-button((click)="subject$.next()") Next
+input(type="text" value="0" #numberRef)
+button((click)="hours$.next(numberRef.value)") Next
