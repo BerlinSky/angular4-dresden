@@ -1,3 +1,5 @@
-div Blog detail component  {{timer | async | date: 'yMMMdjms'}}
+//- div Blog detail component  {{timer | async | date: 'yMMMdjms'}}
 input(type="text" value="0" #numberRef)
 button((click)="hours$.next(numberRef.value)") Next
+
+time-display([timer]="timer | async | date: 'yMMMdjms'")
